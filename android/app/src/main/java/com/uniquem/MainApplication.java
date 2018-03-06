@@ -1,4 +1,4 @@
-package com.uniqem;
+package com.uniquem;
 
 import android.app.Application;
 
