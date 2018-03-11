@@ -19,7 +19,8 @@ const styles ={
         alignItems: 'center',
         height: 60,
         elevation: 6,
-        position: 'relative'
+        position: 'relative',
+        marginBottom: 5
     },
     textStyle:{
         fontSize:20,
