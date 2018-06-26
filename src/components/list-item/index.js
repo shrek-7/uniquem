@@ -1,30 +1,64 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, TouchableOpacity,Text,Image} from 'react-native';
 
 export default class ListItem extends Component{
     render(){
         return(
-            <View style={styles.containerStyle}>
-                {this.props.children}
-            </View>
+            <TouchableOpacity onPress={()=>this.props.onPress(this.props.data)} style={{width:'49%'}}>
+                <View style={styles.containerStyle}>
+                        <View style={styles.listItemStyle}>
+                            <Image
+                                style={styles.iconStyle}
+                                source={this.props.data.image}
+                            />
+                            <Text style={styles.nameStyle}>{this.props.data.name}</Text>
+                            <Text style={styles.priceStyle}>
+                                Rs {this.props.data.price} / {this.props.data.unit}
+                            </Text>
+                        </View>
+                </View>
+            </TouchableOpacity>
         );
     }
 }
 
 const styles = {
     containerStyle: {
-        borderRadius: 8,
         borderWidth: 1,
-        padding: 5,
+        padding: 20,
         backgroundColor: '#fff',
-        justifyContent: 'flex-start',
-        flexDirection: 'row',
         borderColor: '#ddd',
         position: 'relative',
         marginBottom: 5,
-        marginLeft:5,
+        marginLeft:6,
         marginRight: 5,
-        height: 100,
-        alignItems:'center'
+        width:'100%'
+    },
+    iconStyle: {
+        height: 70,
+        width: 70
+    },
+    arrowStyle:{
+        height: 20,
+        width: 20,
+        marginLeft: 20
+    },
+    listItemStyle: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        width: '100%'
+    },
+    nameStyle: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color:'#000',
+        textAlign: 'center'
+    
+    },
+    priceStyle:{
+        fontSize: 12,
+        color: '#000',
+        textAlign: 'center'
     }
 }

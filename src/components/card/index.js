@@ -14,13 +14,13 @@ export default class Card extends Component{
 const styles ={
     containerStyle: {
         borderWidth: 1,
-        borderRadius: 2,
-        borderColor: '#ddd',
+        borderColor: '#A6E8FF',
         borderBottomWidth: 0,
-        elevation: 1,
-        marginLeft: 10,
+        elevation: 3,
+        marginLeft: 20,
         marginTop: 5,
-        marginRight: 10,
-        marginBottom:10
+        marginRight: 20,
+        marginBottom:10,
+
     }
 }

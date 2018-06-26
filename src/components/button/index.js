@@ -5,7 +5,7 @@ export default class Button extends Component{
     render(){
         return(
             <TouchableOpacity onPress={this.props.onPress} style={styles.buttonStyle}>
-            <Text style={styles.textStyle}>Click me</Text>
+                <Text style={styles.textStyle}>{this.props.children}</Text>
             </TouchableOpacity>
         )
     }
@@ -18,12 +18,13 @@ styles= {
         borderRadius: 5,
         borderWidth: 1,
         borderColor: '#153D6B',
-        marginLeft: 25,
-        marginRight: 25,
-        height:50,
+        marginLeft: 40,
+        marginRight: 40,
+        height:60,
         backgroundColor:'#153D6B',
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        padding: 15
     },
     textStyle:{
         color:'#fff',

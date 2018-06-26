@@ -1,132 +1,90 @@
-import React, {Component} from 'react';
-import { View, Text,Button, TouchableOpacity, Modal, Image } from 'react-native';
-import Header from '../../components/header';
-import Card from '../../components/card';
-import ListItem from '../../components/list-item';
-// import Modal from 'react-native-simple-modal';
-const arowRight = require('../../assets/next.png');
-const ListData=[
-        {name:"Milk",image:require('../../assets/milk.png'), price:"50", unit:"lt"},
-        {name:"Curd",image:require('../../assets/curd.png'), price:"120", unit:"kg"},
-        {name:"Paneer",image:require('../../assets/paneer.png'), price:"90", unit:"200 gm"},
-        {name:"Ghee",image:require('../../assets/ghee.png'), price:"200", unit:"500 ml"}
-    ];
+import React,{Component} from 'react';
+// import TimerMixin from 'react-timer-mixin';
+// import { Bubbles, DoubleBounce, Bars, Pulse } from 'react-native-loader';
+import {View, Text, ActivityIndicator, Image, TouchableOpacity} from 'react-native';
+// import {connect} from 'react-redux';
+import {Actions} from 'react-native-router-flux';
+
+// import {emailChanged, passwordChanged, loginUser} from '../../actions';
+
+// const loader = require('../../assets/31.gif');
+
+import dairy from '../../assets/dairy.jpeg';
+import grocery from '../../assets/fruits.jpg';
 
 export default class LandingPage extends Component{
+
     constructor(){
         super()
 
-        this.state={
-            open:false,
-            offset:100
-        }
-
-        this.renderList=this.renderList.bind(this);
+        this.state = {
+        };
     }
-
-    renderList(){
-       return ListData.map(item => {
-            return (
-                <TouchableOpacity  key={item.name}  onPress={this._toggleModal} >
-                    <ListItem >
-                        <View style={styles.listItemStyle}>
-                            <Image
-                                style={styles.iconStyle}
-                                source={item.image}
-                            />
-                            <Text style={styles.nameStyle}>{item.name}</Text>
-                            <Text style={styles.priceStyle}>
-                                Rs {item.price} / {item.unit}
-                            </Text>
-                            <Image
-                                style={styles.arrowStyle}
-                                source={arowRight}
-                            />
-                        </View>
-                        
-                        
-                    </ListItem>
-                </TouchableOpacity>
-            )
-        })
-    }
-
-    _toggleModal = () =>
-    this.setState({ open: !this.state.open});
 
     render(){
         return(
-            <View >
-                <View>
-                    <Header title="Home"/>
-                    {this.renderList()}
-                </View>
-                <Modal
-                    visible={this.state.open}
-                    transparent={true}
-                    animationType={'slide'}
-                    onRequestClose={() => this._toggleModal()}
-                >
-                    <View style={styles.modalContainer}>
-                        <View style={styles.innerContainer}>
-                            <Text>This is content inside of modal component</Text>
-                            <TouchableOpacity>
-                                <Button
-                                    onPress={() => this._toggleModal()}
-                                    title="Add to Cart"
-                                >
-                                </Button>
-                            </TouchableOpacity>
-                        </View>
+            <View style={styles.containerStyle}>
+                <View style={styles.categoryContainer}>
+                    <View style={styles.categoryText}>
+                        <Text style={styles.TextStyle}>Dairy</Text>
+                        <Text style={styles.TextStyle}>Products</Text>
+                        <Text style={styles.subtextStyle}>Milk, curd, paneer...</Text>
                     </View>
-                </Modal>
+                    <TouchableOpacity onPress={()=>Actions.dashboard({category:'dairy'})}>
+                        <Image style={styles.backgroundStyle} source={dairy}/>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.categoryContainer}>
+                    <View style={styles.categoryText}>
+                        <Text style={styles.TextStyle}>Fruits &</Text>
+                        <Text style={styles.TextStyle}>Vegetables</Text>
+                    </View>
+                    <TouchableOpacity onPress={()=>Actions.dashboard({category:'grocery'})}>
+                        <Image style={styles.backgroundStyle} source={grocery}/>
+                    </TouchableOpacity>
+                </View>   
             </View>
         );
     }
 }
 
 const styles ={
-    container: {
-      flex: 1,
-      justifyContent: 'center',
+    containerStyle:{
+        height: '100%',
+        backgroundColor:"#F1F8E9",
+        padding:5,
+        paddingBottom:0
     },
-    modalContainer: {
-      flex: 1,
-      justifyContent: 'center',
-      backgroundColor: 'grey',
+    categoryContainer: {
+        height:'50%',
+        elevation:2,
+        position:'relative',
+        paddingBottom:5
     },
-    innerContainer: {
-      alignItems: 'center',
-      backgroundColor: '#fff',
-      margin: 20,
-      borderRadius: 8
+    backgroundStyle : {
+        height:'100%',
+        width:'100%',
     },
-    iconStyle: {
-        height: 60,
-        width: 60,
-        marginRight: 30
+    categoryText: {
+        position:'absolute',
+        top:80,
+        left:'50%',
+        elevation:4
     },
-    arrowStyle:{
-        height: 20,
-        width: 20,
-        marginLeft: 30
+    TextStyle: {
+        color:'#fff',
+        fontSize:30,
+        fontWeight:'bold'
     },
-    listItemStyle: {
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flexDirection: 'row',
-        paddingLeft: 20
-    },
-    nameStyle: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        textShadowOffset: {
-            height: 1,
-            width: 1
-        },
-        width: 100
-    },
-    priceStyle:{
-        width: 100
+    subtextStyle:{
+        color:'#fff'
     }
-  };
+}
+
+// const mapStateToProps = state => {
+//     return{
+        
+//     };
+// }
+
+// export default connect(mapStateToProps, {emailChanged,passwordChanged,loginUser})(LoginPage);
