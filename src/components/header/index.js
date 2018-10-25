@@ -4,6 +4,7 @@ import {Actions} from 'react-native-router-flux';
 // import {addToCart} from '../../actions';
 
 import { Text, View, Image, TouchableOpacity, TouchableNativeFeedback} from 'react-native';
+import { Icon } from 'react-native-elements';
 import cartEmpty from '../../assets/cart-empty.png';
 // import cartFull from '../../assets/shopping-cart.png';
 import menu from '../../assets/list.png';
@@ -42,23 +43,30 @@ export class Header extends Component{
             <View style={styles.viewStyle}>
 
                 <View>
-                    <TouchableOpacity activeOpacity = { .5 } onPress={ this.onHamburgerClick }>
-                        <Image
+                    {/* <TouchableOpacity activeOpacity = { .5 } onPress={ this.onHamburgerClick }> */}
+                    <Icon
+                        name={this.props.hamburgerStatus?'cross':'menu'}
+                        type='entypo'
+                        onPress={ this.onHamburgerClick }
+                        underlayColor ='#C8FFFF'
+                        size={28}
+                    />
+                        {/* <Image
                             style={styles.menuStyle}
                             source={this.props.hamburgerStatus?close:menu}
-                        />
-                    </TouchableOpacity>
+                        /> */}
+                    {/* </TouchableOpacity> */}
                 </View>
                 <Text style={styles.textStyle}> 
                     {this.props.title}
                 </Text>
                     <View style={styles.cartContainer}>
-                        <TouchableOpacity onPress={()=>Actions.cartPage()}>
-                            <Image
-                                style={styles.cartStyle}
-                                source={cartEmpty}
+                            <Icon
+                                name='shopping-cart'
+                                type='evilicons'
+                                size={28}
+                                onPress={()=>Actions.cartPage()}
                             />
-                        </TouchableOpacity>  
                             {Object.keys(this.props.cart.data).length>0?
                                 <View style={styles.cartCounter}>
                                     <Text style={styles.cartContainerText}>
@@ -77,21 +85,20 @@ export class Header extends Component{
 
 const styles ={
     viewStyle:{
-        backgroundColor: '#00B8D4',
+        backgroundColor: '#E1FFFF',
         justifyContent: 'space-between',
         flexDirection: 'row',
         alignItems: 'center',
         height: 60,
-        elevation: 6,
+        elevation: 4,
         position: 'relative',
         paddingRight:15,
         paddingLeft: 10,
-        marginBottom: 5,
         overflow: 'visible'
     },
     textStyle:{
         fontSize:20,
-        color: '#fff',
+        color: '#000',
         fontWeight:'bold'
     },
     cartStyle: {
@@ -108,17 +115,19 @@ const styles ={
     },
     cartCounter: {
         borderRadius: 10,
+        borderWidth:1,
+        borderColor: '#000',
         position:'absolute',
         top:-8,
         right:-7,
         height: 20,
         width: 20,
-        backgroundColor: '#232f3e',
+        backgroundColor: '#E1FFFF',
         flexDirection:'row',
         justifyContent:"center"
     },
     cartContainerText:{
-        color:'#fff'
+        color:'#000'
     }
 }
 const mapStateToProps = state => {

@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {Text, View, TouchableOpacity,Image} from 'react-native';
+import { Icon } from 'react-native-elements';
 import add from '../../assets/add.png';
 import minus from '../../assets/minus.png';
 
@@ -51,15 +52,21 @@ export default class Counter extends Component{
         return(
             <View style={styles.containerStyle}>
                 <TouchableOpacity onPress={this.decrementCounter}>
-                    {/* <View style={styles.iconSubWrapperStyle}> */}
-                        <Image style={styles.iconStyle} source={minus}/>
-                    {/* </View> */}
+                    <Icon
+                        name='minus-square-o'
+                        type={'font-awesome'}
+                        size={28}
+                    />
                 </TouchableOpacity>
                 
                 <Text>{this.state.value}</Text>
 
                 <TouchableOpacity onPress={this.incrementCounter}>
-                        <Image style={styles.iconStyle} source={add}/>
+                    <Icon
+                        name='plus-square-o'
+                        type={'font-awesome'}
+                        size={28}
+                    />
                 </TouchableOpacity>    
             </View>
         )
@@ -81,19 +88,16 @@ const styles={
     iconAddWrapperStyle:{
         width: 20,
         height: 20,
-        borderRadius: 100/2,
         borderWidth: 1,
         alignItems:'center',
         justifyContent: 'center',
-        borderColor:'#76ff03'
     },
     iconSubWrapperStyle:{
         width: 20,
         height: 20,
-        borderRadius: 100/2,
         borderWidth: 1,
         alignItems:'center',
         justifyContent: 'center',
-        borderColor:'#E57373'
+        padding:5
     }
 }

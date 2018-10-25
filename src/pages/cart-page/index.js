@@ -95,9 +95,9 @@ export class CartPage extends Component{
                 </ScrollView>
                 <View style={this.state.emptyCart?styles.disableOrderStyle:styles.orderButtonCont}>
                         <TouchableOpacity>
-                                <Text style={{color:'#fff',fontSize:15,fontWeight:'bold'}}>PLACE ORDER</Text>
+                                <Text style={{color:'#000',fontSize:15,fontWeight:'bold'}}>PLACE ORDER</Text>
                         </TouchableOpacity>
-                        <Text style={{color:'#fff',fontSize:15}}>Total: Rs {this.orderTotal}</Text>
+                        <Text style={{color:'#000',fontSize:15}}>Total: Rs {this.orderTotal}</Text>
                 </View>
             </View>
         );
@@ -107,7 +107,7 @@ export class CartPage extends Component{
 const styles ={
     listItemStyle:{
         backgroundColor: '#fff',
-        padding: 10,
+        padding: 15,
         elevation:2,
         margin:4,
         flexDirection: 'row',
@@ -115,6 +115,7 @@ const styles ={
         alignItems: 'center',
         position: 'relative',
         paddingRight: 15,
+        paddingLeft:0,
         marginBottom: 4
     },
     containerStyle: {
@@ -127,7 +128,7 @@ const styles ={
     },
     listNameStyle: {
         margin:5,
-        width: '20%',
+        width: '30%',
         color:'#000',
         fontSize: 17
     },
@@ -151,10 +152,10 @@ const styles ={
         position: 'absolute',
         bottom: 0,
         width:'100%',
-        backgroundColor:'#64DD17',
+        backgroundColor:'#ABFF73',
         flexDirection:'row',
         justifyContent:'space-around',
-        padding:10
+        padding:15
     },
     disableOrderStyle:{
         position: 'absolute',

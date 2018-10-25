@@ -1,23 +1,33 @@
 import React, {Component} from 'react';
 import {View, TouchableOpacity,Text,Image} from 'react-native';
+import { Divider, Button } from 'react-native-elements';
 
 export default class ListItem extends Component{
     render(){
         return(
-            <TouchableOpacity onPress={()=>this.props.onPress(this.props.data)} style={{width:'49%'}}>
                 <View style={styles.containerStyle}>
                         <View style={styles.listItemStyle}>
                             <Image
                                 style={styles.iconStyle}
                                 source={this.props.data.image}
                             />
+                            
                             <Text style={styles.nameStyle}>{this.props.data.name}</Text>
-                            <Text style={styles.priceStyle}>
-                                Rs {this.props.data.price} / {this.props.data.unit}
-                            </Text>
                         </View>
+                            <View style={styles.priceStyleCont}>
+                                <Text style={styles.priceStyle}>
+                                    Rs {this.props.data.price} / {this.props.data.unit}
+                                </Text>
+                                <Button
+                                    buttonStyle={{padding:5,margin:0}}
+                                    icon={{name: 'add-shopping-cart', color: '#000', type: 'materialicons', size:15}}
+                                    color='#000'
+                                    backgroundColor='#F1FFFF'
+                                    underlayColor='#C8FFFF'
+                                    onPress={()=>this.props.onPress(this.props.data)}
+                                    title='Add' />
+                            </View>
                 </View>
-            </TouchableOpacity>
         );
     }
 }
@@ -25,14 +35,11 @@ export default class ListItem extends Component{
 const styles = {
     containerStyle: {
         borderWidth: 1,
-        padding: 20,
-        backgroundColor: '#fff',
+        padding: 15,
+        backgroundColor: '#FFF',
         borderColor: '#ddd',
         position: 'relative',
-        marginBottom: 5,
-        marginLeft:6,
-        marginRight: 5,
-        width:'100%'
+        width:'50%'
     },
     iconStyle: {
         height: 70,
@@ -59,6 +66,13 @@ const styles = {
     priceStyle:{
         fontSize: 12,
         color: '#000',
-        textAlign: 'center'
+        width: '50%'
+    },
+    priceStyleCont :{
+        width:'100%',
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center',
+        marginTop:10
     }
 }

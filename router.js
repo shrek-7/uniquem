@@ -4,7 +4,7 @@ import LandingPage from './src/pages/landing-page';
 import LoginPage from './src/pages/login-page';
 import Dashboard from './src/pages/dashboard';
 import CartPage from './src/pages/cart-page';
-import close from './src/assets/left.png';
+import close from './src/assets/next.png';
 // import Draw from './src/components/drawer';
 
 const RouterComponent = () => {
@@ -17,7 +17,7 @@ const RouterComponent = () => {
                 <Scene key="main" hideNavBar>
                     <Scene key='landingpage' component={LandingPage} hideNavBar direction="vertical"/>
                     <Scene key='dashboard' component={Dashboard} hideNavBar direction="vertical"/>
-                    <Scene key='cartPage' leftButtonStyle={{width: 50}} backButtonImage={close} titleStyle={styles.navbarTitleStyle} navigationBarStyle={styles.navbarStyle} component={CartPage} title="Shopping Cart" hideNavBar={false} direction="vertical"/>
+                    <Scene key='cartPage' leftButtonStyle={{width: 50, transform:([{ rotate: '45deg' }])}} backButtonImage={close} titleStyle={styles.navbarTitleStyle} navigationBarStyle={styles.navbarStyle} component={CartPage} title="Shopping Cart" hideNavBar={false} direction="vertical"/>
                 </Scene>
                 {/* <Scene key="cart" hideNavBar> */}
                     
@@ -29,11 +29,11 @@ const RouterComponent = () => {
 
 const styles = {
     navbarStyle : {
-        backgroundColor:'#00B8D4',
+        backgroundColor:'#E1FFFF',
         padding:5
     },
     navbarTitleStyle : {
-        color:'#fff',
+        color:'#000',
         marginLeft:0
     }
 }

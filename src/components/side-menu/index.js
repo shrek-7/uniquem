@@ -12,49 +12,49 @@ export default class SideMenu extends Component{
     render(){
         return(
             <View style={styles.container}>
-                <TouchableOpacity onPress={()=>Actions.landingPage()}>
+                <TouchableOpacity onPress={()=>Actions.dashboard({category:'dairy'})}>
                     <View style={styles.listStyle}> 
+                        <Text style={styles.textStyle}>Home</Text>
                         <Image
                             style={styles.iconStyle}
                             source={home}
-                        />                  
-                        <Text style={styles.textStyle}>Home</Text>                
+                        />                                  
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={()=>Actions.cartPage()}>
                     <View style={styles.listStyle}>
+                        <Text style={styles.textStyle}>My Cart</Text>    
                         <Image
                             style={styles.iconStyle}
                             source={cart}
-                        />                   
-                        <Text style={styles.textStyle}>My Cart</Text>                
+                        />                                  
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity>
                     <View style={styles.listStyle}>
+                        <Text style={styles.textStyle}>My Orders</Text>
                         <Image
                             style={styles.iconStyle}
                             source={order}
-                        />                   
-                        <Text style={styles.textStyle}>My Orders</Text>                
+                        />                                   
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity>
                     <View style={styles.listStyle}>
+                        <Text style={styles.textStyle}>About Us</Text>      
                         <Image
                             style={styles.iconStyle}
                             source={smile}
-                        />                   
-                        <Text style={styles.textStyle}>About Us</Text>                
+                        />                             
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={()=>Actions.login()}>
-                    <View style={styles.listStyle}>
+                    <View style={styles.listStyle}>                  
+                        <Text style={styles.textStyle}>Logout</Text>
                         <Image
                             style={styles.iconStyle}
                             source={logout}
-                        />                   
-                        <Text style={styles.textStyle}>Logout</Text>                
+                        />                 
                     </View>
                 </TouchableOpacity>
             </View>
@@ -65,20 +65,21 @@ export default class SideMenu extends Component{
 const styles={
     container: {
         height: '100%',
-        backgroundColor: '#B2EBF2',
+        backgroundColor: '#FFF',
     },
     listStyle:{
         padding: 20,
         alignItems: 'center',
         borderBottomWidth: 0.5,
-        borderColor: '#fff',
-        flexDirection: 'row'
+        borderColor: '#000',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     textStyle:{
         color:'#000',
         fontSize: 15,
         fontWeight: 'bold',
-        marginLeft: 30
+        marginLeft: 10
     },
     iconStyle:{
         height:20,

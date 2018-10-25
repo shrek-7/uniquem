@@ -52,7 +52,6 @@ const styles ={
     containerStyle:{
         height: '100%',
         backgroundColor:"#F1F8E9",
-        padding:5,
         paddingBottom:0
     },
     categoryContainer: {
